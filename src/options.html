@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Send to GPT Settings</title>
+  <style>
+    body { font-family: sans-serif; padding: 1em; }
+    form, ul { margin-top: 1em; }
+    li { margin-bottom: .5em; display: flex; align-items: center; }
+    button { margin-left: .5em; }
+    label { display: block; margin-top: .5em; }
+  </style>
+</head>
+<body>
+  <h1>Send to GPT Settings</h1>
+  <form id="form">
+    <label>Name:<br><input type="text" id="name" required></label>
+    <label>Prompt (use {{content}}):<br><textarea id="prompt" rows="10" cols="150" required></textarea></label>
+    <label>Category:<br><input type="text" id="category" placeholder="Optional"></label>
+    <label>Model:<br>
+      <select id="model">
+        <option value="gpt-4o">gpt-4o</option>
+        <option value="gpt-o3">gpt-o3</option>
+        <option value="gpt-o4-mini">gpt-o4-mini</option>
+        <option value="gpt-o4-mini-high">gpt-o4-mini-high</option>
+      </select>
+    </label>
+    <label><input type="checkbox" id="forLink" checked> For Link</label>
+    <label><input type="checkbox" id="forSelection"> For Selection</label>
+    <label><input type="checkbox" id="forContent"> For Content</label>
+
+    <div id="content-fields" style="display:none; margin-left:1em;">
+      <label>Selector:<br>
+        <input type="text" id="selector" placeholder="CSS selector (default: body)">
+      </label>
+      <label>Output Type:<br>
+        <select id="outputType">
+          <option value="text">Text</option>
+          <option value="html">HTML</option>
+        </select>
+      </label>
+      <label>Max Items:<br>
+        <input type="number" id="maxItems" placeholder="No limit" min="1">
+      </label>
+    </div>
+
+    <button type="submit" id="save-btn">Save</button>
+    <button type="button" id="cancel-btn">Cancel</button>
+  </form>
+
+  <h2>Existing Prompts</h2>
+  <ul id="list"></ul>
+  <script src="options.js"></script>
+</body>
+</html>
